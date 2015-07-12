@@ -1,0 +1,8 @@
+housepowerconsump <- read_delim("household_power_consumption.txt", delim = ";")
+housepowerconsumpdate <- housepowerconsump[66637:69516,]
+DateTime <- paste(housepowerconsumpdate$Date, housepowerconsumpdate$Time, sep="-")
+strpDateTime <- strptime(DateTime, "%d/%m/%Y-%H:%M:%S")
+housepowerconsumpdate <- cbind(housepowerconsumpdate, strpDateTime)
+png("plot2.png", width=480, height=480)
+with(housepowerconsumpdate, plot(strpDateTime, Global_active_power, pch=NA_integer_, type="l", ylab="Global Active Power (kilowatts)", xlab=""))
+dev.off()
