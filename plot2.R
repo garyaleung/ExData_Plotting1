@@ -1,3 +1,5 @@
+install.packages("readr")
+library(readr)
 housepowerconsump <- read_delim("household_power_consumption.txt", delim = ";")
 housepowerconsumpdate <- housepowerconsump[66637:69516,]
 DateTime <- paste(housepowerconsumpdate$Date, housepowerconsumpdate$Time, sep="-")
